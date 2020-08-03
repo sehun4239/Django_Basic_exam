@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <!-- action = http://localhost:8000/polls/1/vote/        -->
+        <h1>{{ question.question_text }}</h1>
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+        {% csrf_token %}            <!--html에서 form 사용할 때 보안적으로 문제가 생겨서 넣음-->
+
+        {% for choice in question.choice_set.all %}
+            <input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}"> {{ choice.choice_text }}</label>
+            <br>
+        {% endfor %}
+
+            <br>
+            <input type="submit" value="투표">
+
+        </form>
+    </body>
+</html>

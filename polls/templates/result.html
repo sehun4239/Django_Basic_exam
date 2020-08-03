@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>결과 파일 입니다.</h1>
+        <ul>
+            {% for vote in vote_list.choice_set.all %}
+            <li>{{ vote.choice_text }} : {{ vote.votes }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

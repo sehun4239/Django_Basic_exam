@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>투표 목록이 나와야 한단다</h1>
+        <!-- index 함수에서 질문의 목록을 줘야지 그걸 출력할 수 있어요  -->
+        <!-- Question class의 객체 3마리가 생성돼서 그 3개를 리스트 안에 넣어서 전달받는다.  -->
+        {% if latest_question_list %}
+            <ul>
+                {% for question in latest_question_list %}
+                <li><a href="/polls/{{ question.id }}">{{ question.question_text }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>출력할 투표목록이 존재하지 않습니다!</p>
+        {% endif %}
+    </body>
+</html>
